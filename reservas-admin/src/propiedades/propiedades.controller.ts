@@ -30,12 +30,12 @@ export class PropiedadesController {
   }
 
   /* Busqueda por tipo de propiedad, enviada como parámetro */
-  @Get(':id')
+  @Get(':tipo')
   findByType(@Param('tipo') tipo: TipoPropiedad){
     return this.propiedadesService.findByType(tipo);
   }
 
-  /* Para actualizar los datos de la propuiedad utiliza el metodo patch para cambiar
+  /* Para actualizar los datos de la propiedad utiliza el metodo patch para cambiar
   solo los datos enviados, sin afectar los que no se enviaron cambios */
   @Patch(':id')
   update(@Param('id') id: number, @Body() propiedad: PropiedadDto) {
