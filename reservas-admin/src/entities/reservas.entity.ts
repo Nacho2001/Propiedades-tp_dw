@@ -21,20 +21,22 @@ export class Reservas{
     salida: boolean;
 
     // Estado de reserva, por defecto "pendiente"
-    @Column({ type: 'string', default: 'pendiente', nullable: false, length: 20 })
+    @Column({ type: 'varchar', default: 'pendiente', nullable: false, length: 20 })
     estado: string;
 
     // Codigo de ingreso 
-    @Column({ type: 'string', nullable: false, length: 6 })
+    @Column({ type: 'varchar', nullable: false, length: 6 })
     codigo: string;
 
+    
     // id de Usuario que hizo la reserva
-    @ManyToOne(() => Usuarios, usuarios => usuarios.id)
-    @JoinColumn({ name: 'id'})
-    idUsuario: Usuarios;
+    @ManyToOne(() => Usuarios, (usuario) => usuario.reservas)
+    //@ManyToOne( type => Usuarios, usuario => usuario.id)
+    @JoinColumn({ name: 'usuario'})
+    usuario: Usuarios;
 
     // Id de propiedad que se reservó
-    @ManyToOne(() => Propiedades, propiedades => propiedades.id)
-    @JoinColumn({ name: 'id'})
-    idPropiedad: Propiedades;
+    @ManyToOne(() => Propiedades, (propiedades) => propiedades.reservas)
+    @JoinColumn({ name: 'propiedades'})
+    propiedades: Propiedades;
 }

@@ -11,10 +11,10 @@ import { AuthService } from './auth/auth.service';
 @Module({
   imports: [
     TypeOrmModule.forRoot(db),
-    //ReservasModule,
-    //PropiedadesModule
+    ReservasModule,
+    PropiedadesModule
   ],
-  controllers: [AppController],
-  providers: [AppService, AuthService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

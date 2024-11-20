@@ -6,7 +6,7 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
-  app.setGlobalPrefix('reservas');
+  app.setGlobalPrefix('alquiler');
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(envs.port);
 }

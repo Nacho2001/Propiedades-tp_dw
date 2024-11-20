@@ -1,5 +1,6 @@
-import { IsEnum, IsNumber, IsString } from "class-validator";
+import { IsArray, IsEnum, IsNumber, IsString } from "class-validator";
 import { TipoPropiedad } from "src/enums/tipos.enum";
+import { ReservaDto } from "./reservas.dto";
 
 // declara propiedad DTO
 export class PropiedadDto {
@@ -17,4 +18,7 @@ export class PropiedadDto {
     // precio
     @IsNumber()
     precio: number;
+
+    @IsArray()
+    reservas: ReservaDto[];
 }

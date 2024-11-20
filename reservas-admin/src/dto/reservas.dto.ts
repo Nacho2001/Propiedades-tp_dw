@@ -1,5 +1,7 @@
 import { IsBoolean, IsDate, IsEnum, IsString } from "class-validator";
 import { EstadoReserva } from "src/enums/estados.enum";
+import { UsuarioDto } from "./usuarios.dto";
+import { PropiedadDto } from "./propiedades.dto";
 
 // Crea el DTO de una reserva
 export class ReservaDto{
@@ -20,7 +22,7 @@ export class ReservaDto{
     @IsString()
     codigo: string;
 
-    idUsuario: number;
+    usuario: UsuarioDto;
 
-    idPropiedad: number;
+    propiedades: PropiedadDto;
 }

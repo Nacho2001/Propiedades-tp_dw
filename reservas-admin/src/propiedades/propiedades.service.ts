@@ -1,18 +1,18 @@
-import { HttpException, Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Propiedades } from 'src/entities/propiedades.entity';
-import { QueryFailedError, Repository } from 'typeorm';
-import { PropiedadDto } from 'src/dto/propiedades.dto';
-import checkNull from './checkNull';
-import { TipoPropiedad } from 'src/enums/tipos.enum';
+import { HttpException, Injectable, NotFoundException } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { PropiedadDto } from "../dto/propiedades.dto";
+import { Propiedades } from "../entities/propiedades.entity";
+import { QueryFailedError, Repository } from "typeorm";
+import checkNull from "./checkNull";
+import { TipoPropiedad } from "src/enums/tipos.enum";
+
 
 @Injectable()
 export class PropiedadesService {
   constructor(
     @InjectRepository(Propiedades) private readonly repo: Repository<PropiedadDto>
-
   ){}
-
+  
   // Creación de nueva propiedad
   async create(propiedad: PropiedadDto): Promise<PropiedadDto> {
     try {
@@ -32,7 +32,7 @@ export class PropiedadesService {
     }
     
   }
-
+  
   // Obtener todas las propiedades
   async findAll(): Promise<Propiedades[]> {
     try {
@@ -63,7 +63,7 @@ export class PropiedadesService {
     }
   }
 
-
+  
   // Buscar propiedades por tipo; Con esta consulta, se pueden buscar parcelas o departamentos
   async findByType(tipo: TipoPropiedad): Promise<PropiedadDto>{
     try {
@@ -80,6 +80,7 @@ export class PropiedadesService {
     }
   }
 
+  
   // Actualizar datos de propiedad
   async update(id: number, propiedad: PropiedadDto) {
     try {
@@ -111,3 +112,4 @@ export class PropiedadesService {
     }
   }
 }
+  

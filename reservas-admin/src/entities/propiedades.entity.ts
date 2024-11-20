@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Reservas } from "./reservas.entity";
 
 @Entity('propiedades')
 export class Propiedades{
@@ -7,15 +8,17 @@ export class Propiedades{
     id: number;
 
     // nombre de propiedad
-    @Column({ type: 'string', nullable: false, length: 255 })
+    @Column({ type: 'varchar', nullable: false, length: 255 })
     nombre: string;
 
     // Tipo de propiedad: Departamento o parcela
-    @Column({ type: 'string', nullable: false, length: 255 })
+    @Column({ type: 'varchar', nullable: false, length: 255 })
     tipo: string;
 
     // Precio (la alternativa es cargarlo como flotante para permitir decimales)
-    @Column({ type: 'decimal', nullable: false })
+    @Column({ type: 'int', nullable: false })
     precio: number;
-
+    
+    @OneToMany(() => Reservas, (reservas) => reservas.propiedades)
+    reservas: Reservas[];
 }
