@@ -4,6 +4,7 @@ import { ReservaDto } from 'src/dto/reservas.dto';
 import { Reservas } from 'src/entities/reservas.entity';
 import { QueryFailedError, Repository } from 'typeorm';
 import checkNull from './checkNull';
+import generateCode from './generateCode';
 
 @Injectable()
 export class ReservasService {
@@ -26,7 +27,9 @@ export class ReservasService {
     // Crear nueva reserva
     async create(reserva: ReservaDto): Promise<ReservaDto>{
         try {
-            let nullFlag = checkNull(reserva)
+            reserva.codigo = generateCode();
+            let nullFlag = checkNull(reserva);
+            console.log(nullFlag)
             if (nullFlag == 0) {
                 const result = await this.repo.save(reserva);
                 return result;

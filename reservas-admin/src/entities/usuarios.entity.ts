@@ -26,7 +26,7 @@ export class Usuarios {
     dni: number;
 
     // rol de usuario, por defecto, es cliente
-    @Column({ type: 'varchar', default: 'cliente', length: 255})
+    @Column({ type: 'varchar', default: 'Cliente', length: 255})
     rol: string;
 
     // Activo ?

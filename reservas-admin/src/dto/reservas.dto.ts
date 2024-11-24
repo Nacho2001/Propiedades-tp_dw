@@ -1,4 +1,4 @@
-import { IsBoolean, IsDate, IsEnum, IsString } from "class-validator";
+import { IsArray, IsBoolean, IsDateString, IsEnum, IsOptional, IsString } from "class-validator";
 import { EstadoReserva } from "src/enums/estados.enum";
 import { UsuarioDto } from "./usuarios.dto";
 import { PropiedadDto } from "./propiedades.dto";
@@ -7,22 +7,26 @@ import { PropiedadDto } from "./propiedades.dto";
 export class ReservaDto{
     id: number;
 
-    @IsDate()
+    @IsDateString()
     fechaIngreso: Date;
 
-    @IsDate()
+    @IsDateString()
     fechaSalida: Date;
 
+    @IsOptional()
     @IsBoolean()
     salida: boolean;
 
+    @IsOptional()
     @IsEnum(EstadoReserva)
     estado: EstadoReserva;
 
+    @IsOptional()
     @IsString()
     codigo: string;
 
     usuario: UsuarioDto;
 
+    @IsArray()
     propiedades: PropiedadDto;
 }
